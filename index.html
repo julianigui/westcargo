@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>West Cargo | Excelência em Transporte Rodoviário</title>
+<meta name="description" content="Transportadora Rodoviária atuando desde 1998 no mercado de carga atendendo Companhias Aéreas, Agentes de Carga Aérea, Importadores e Exportadores.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+color-scheme: light;
+--night:#011A30;
+--navy:#012D52;
+--orange:#F0573E;
+--sun:#F5B820;
+--sky:#3BA3E0;
+--teal:#1FB39A;
+--ink:#0E1E33;
+--paper:#FFFFFF;
+--mist:#F2F4F7;
+--muted:#5D6B7D;
+--font:"Archivo", "Helvetica Neue", Arial, sans-serif;
+--pad: clamp(20px, 6vw, 88px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--font);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+.label{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.hdr{position:fixed;inset:0 0 auto;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+padding:calc(18px + env(safe-area-inset-top,0px)) var(--pad) 18px;color:#fff;transition:background .4s,color .4s,padding .4s}
+.hdr.solid{background:rgba(1,26,48,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-top:calc(12px + env(safe-area-inset-top,0px));padding-bottom:12px}
+.logo{display:inline-flex;background:#fff;border-radius:999px;padding:9px 16px;justify-self:start}
+.logo img{height:22px;width:auto}
+.tagline{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.hdr-r{justify-self:end;display:flex;align-items:center;gap:22px}
+.langs{display:flex;gap:6px;font-size:.78rem;letter-spacing:.06em}
+.langs a{opacity:.6}.langs a[aria-current]{opacity:1}
+.langs span{opacity:.4}
+.pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#fff;color:var(--navy);
+font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:9px 18px;line-height:1.15;text-align:center;transition:background .25s,color .25s}
+.pill:hover{background:var(--orange);color:#fff}
+.burger{width:34px;height:20px;background:none;border:0;cursor:pointer;position:relative;color:inherit}
+.burger i{position:absolute;right:0;height:1.5px;background:currentColor;transition:.35s}
+.burger i:nth-child(1){top:4px;width:100%}.burger i:nth-child(2){top:12px;width:70%}
+.menu-open .burger i:nth-child(1){top:9px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:9px;width:100%;transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:40;background:var(--night);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;
+padding:120px var(--pad) 48px;clip-path:circle(0% at calc(100% - 60px) 40px);transition:clip-path .7s cubic-bezier(.7,0,.2,1);visibility:hidden}
+.menu-open .menu{clip-path:circle(150% at calc(100% - 60px) 40px);visibility:visible}
+.menu nav{display:flex;flex-direction:column;gap:2px;align-self:center}
+.menu nav a{font-size:clamp(2rem,5vw,4.2rem);font-weight:300;font-stretch:110%;line-height:1.08;letter-spacing:-.02em;transition:color .2s,transform .3s}
+.menu nav a:hover{color:var(--orange);transform:translateX(10px)}
+.menu aside{align-self:end;justify-self:end;text-align:right;display:flex;flex-direction:column;gap:18px}
+.menu aside .muted{opacity:.55;font-size:.85rem}
+.social{display:flex;gap:14px;justify-content:flex-end}
+.social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;transition:background .2s,border-color .2s}
+.social a:hover{background:var(--orange);border-color:var(--orange)}
+.social svg{width:18px;height:18px;fill:currentColor}
+.hero{position:relative;height:260vh;background:var(--night);color:#fff}
+.hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#road{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+padding-top:clamp(120px,19vh,190px);text-align:center;padding-inline:var(--pad);z-index:2}
+.hero h1{font-weight:500;font-stretch:108%;font-size:clamp(2.8rem,8.4vw,8.4rem);line-height:.98;letter-spacing:-.035em}
+.hero h1 span{display:block}
+.hero h1 .c2{color:var(--orange);font-weight:400}
+.hero p{max-width:640px;margin-top:28px;font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.6;opacity:.82}
+.reveal{position:absolute;inset:0;z-index:3;clip-path:inset(72% 34% 0% 34% round 50vw 50vw 0vw 0vw);will-change:clip-path}
+.reveal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.4s ease}
+.reveal img.off{opacity:0}
+.scroll-hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:4;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+.statement{padding:clamp(100px,16vh,180px) var(--pad) clamp(60px,10vh,120px)}
+.statement .label{margin-bottom:34px;color:var(--ink)}
+.big{font-size:clamp(1.9rem,4.4vw,4.4rem);font-weight:500;font-stretch:104%;line-height:1.1;letter-spacing:-.03em;color:var(--navy);max-width:1250px}
+.big .hl{color:var(--orange)}
+.big .w{opacity:.14;transition:none}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px);align-items:center;margin-top:clamp(60px,10vh,110px)}
+.split p{font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.7;color:var(--muted);max-width:56ch}
+.split figure{border-radius:24px;overflow:hidden;aspect-ratio:850/492}
+.split figure img{width:100%;height:115%;object-fit:cover}
+.more{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-weight:500;color:var(--navy)}
+.more::before{content:"";width:10px;height:10px;border-radius:50%;border:1.5px solid currentColor;transition:background .25s}
+.more span{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1.5px no-repeat;padding-bottom:4px;transition:background-size .35s}
+.more:hover::before{background:var(--orange);border-color:var(--orange)}
+.more:hover span{background-size:0 1.5px;background-position:100% 100%}
+.on-dark .more{color:#fff}
+.divs{position:relative;height:440vh}
+.divs-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#fff}
+.blob{position:absolute;width:62vw;height:62vw;border-radius:50%;filter:blur(90px);opacity:.55;transition:background 1s}
+.blob.a{right:-26vw;top:-30vw}.blob.b{left:-28vw;bottom:-34vw}
+.dots{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;z-index:3}
+.dots button{width:13px;height:13px;border-radius:50%;border:0;background:var(--c);cursor:pointer;position:relative;transition:transform .3s}
+.dots button.on{background:#fff;box-shadow:inset 0 0 0 3.5px var(--c);transform:scale(1.25)}
+.panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+padding:90px var(--pad) 40px;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
+.panel.on{opacity:1;visibility:visible}
+.panel .label{color:var(--navy);margin-bottom:14px}
+.wm{display:flex;align-items:baseline;gap:.08em;color:var(--navy);font-size:clamp(3rem,10vw,9.5rem);line-height:1;letter-spacing:-.04em}
+.wm b{font-weight:800;font-stretch:96%}
+.wm i{font-style:normal;font-weight:200;font-stretch:100%}
+.wm .dot{width:.26em;height:.26em;border-radius:50%;border:.075em solid var(--c);align-self:center;transform:translateY(.12em);flex:none}
+.panel p{max-width:620px;margin-top:22px;color:var(--muted);line-height:1.6;font-size:clamp(.95rem,1.15vw,1.08rem)}
+.panel img{width:min(560px,78vw);margin-top:clamp(18px,3.5vh,40px);transform:translateY(30px);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.panel.on img{transform:none}
+.panel .more{margin-top:18px}
+.eco{background:var(--mist);padding:clamp(80px,14vh,150px) var(--pad);display:grid;place-items:center}
+.ring{position:relative;width:min(560px,80vw);aspect-ratio:1}
+.ring svg{position:absolute;inset:0;overflow:visible}
+.ring .center{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring .center img{width:44%}
+.node{position:absolute;width:260px}
+.node h3{display:flex;align-items:center;gap:10px;font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.node h3::before{content:"";width:22px;height:22px;border-radius:50%;border:6px solid var(--c);background:#fff;flex:none}
+.node ul{list-style:none;font-size:.86rem;line-height:1.5;color:var(--muted)}
+.node li+li{margin-top:4px}
+.n1{left:50%;top:-6%;transform:translate(-50%,-100%);text-align:center}.n1 h3{justify-content:center}
+.n2{left:100%;top:50%;transform:translate(24px,-30%)}
+.n3{left:50%;bottom:-6%;transform:translate(-50%,100%);text-align:center}.n3 h3{justify-content:center}
+.n4{right:100%;top:50%;transform:translate(-24px,-30%);text-align:right}.n4 h3{flex-direction:row-reverse}
+.eco-wrap{padding:150px 300px}
+.frota{background:var(--night);color:#fff;position:relative}
+.frota-bg{position:absolute;inset:0;overflow:hidden}
+.frota-bg img{width:100%;height:100%;object-fit:cover;opacity:.12;filter:grayscale(.3)}
+.frota-in{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(30px,5vw,80px);padding:clamp(100px,16vh,170px) var(--pad)}
+.frota .label{color:#fff;opacity:.8;margin-bottom:24px}
+.frota-intro{font-size:clamp(1.2rem,1.9vw,1.75rem);line-height:1.4;max-width:30ch;margin-bottom:clamp(50px,9vh,100px);font-weight:300}
+.fleet{list-style:none}
+.fleet li{font-size:clamp(1.7rem,4vw,4rem);font-weight:500;font-stretch:104%;letter-spacing:-.03em;line-height:1.05;
+padding:.28em 0;color:rgba(255,255,255,.18);transition:color .45s;cursor:default}
+.fleet li.on{color:#fff}
+.fleet li.on::after{content:"";display:inline-block;width:.3em;height:.3em;border-radius:50%;background:var(--orange);margin-left:.25em;vertical-align:.1em}
+.spec-col{position:relative}
+.spec{position:sticky;top:22vh;background:#fff;color:var(--ink);border-radius:28px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.spec figure{background:var(--mist);border-radius:18px;padding:24px;display:grid;place-items:center;aspect-ratio:311/150}
+.spec figure img{width:100%;transition:opacity .35s, transform .5s}
+.spec h3{margin-top:22px;font-size:1.35rem;font-weight:700;color:var(--navy);line-height:1.2}
+.spec dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin-top:16px;font-size:.95rem}
+.spec dt{color:var(--muted)}
+.spec dd{font-weight:600}
+.spec.swap figure img{opacity:0;transform:translateX(-20px)}
+.frota-foot{margin-top:60px}
+.certs{padding:clamp(80px,12vh,130px) 0;overflow:hidden}
+.certs .label{padding:0 var(--pad);margin-bottom:40px}
+.marquee{display:flex;width:max-content;animation:mq 38s linear infinite}
+.marquee:hover{animation-play-state:paused}
+.marquee img{height:110px;width:auto;margin:0 clamp(28px,4vw,60px);object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
+.marquee img:hover{filter:none;opacity:1}
+@keyframes mq{to{transform:translateX(-50%)}}
+.cases{padding:clamp(100px,14vh,160px) var(--pad) clamp(120px,18vh,200px);background:var(--mist);overflow:hidden}
+.cases-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(60px,10vh,110px)}
+.cases-head h2{font-size:clamp(2.3rem,5.6vw,5.6rem);font-weight:500;font-stretch:104%;letter-spacing:-.035em;line-height:1;color:var(--navy)}
+.cases-head p{color:var(--muted);line-height:1.7;font-size:clamp(1rem,1.2vw,1.15rem);max-width:46ch}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.4vw,36px);align-items:start}
+.col{display:flex;flex-direction:column;gap:clamp(14px,2.4vw,36px)}
+.col:nth-child(2){margin-top:14vh}.col:nth-child(3){margin-top:5vh}.col:nth-child(4){margin-top:22vh}
+.col img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;background:#dde3ea}
+.col:nth-child(odd) img:nth-child(3n+2){width:78%;margin-left:auto}
+.col:nth-child(even) img:nth-child(3n){width:82%}
+.ftr{position:relative;color:#fff;background:var(--night);overflow:hidden}
+.ftr-bg{position:absolute;inset:0}
+.ftr-bg img{width:100%;height:100%;object-fit:cover;opacity:.32}
+.ftr-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,26,48,.2),var(--night) 92%)}
+.ftr-in{position:relative;padding:clamp(110px,18vh,200px) var(--pad) calc(36px + env(safe-area-inset-bottom,0px))}
+.cta{display:block;font-size:clamp(3rem,11vw,11rem);font-weight:500;font-stretch:108%;letter-spacing:-.045em;line-height:.92;transition:color .3s}
+.cta:hover{color:var(--orange)}
+.ftr-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-top:clamp(70px,12vh,130px);padding-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.ftr-grid nav{display:grid;grid-template-columns:repeat(2,auto);gap:10px 40px;justify-content:start}
+.ftr-grid a{opacity:.8;transition:opacity .2s}
+.ftr-grid a:hover{opacity:1}
+.legal{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:50px;font-size:.82rem;opacity:.7;align-items:center}
+.legal img{height:22px;width:auto;background:#fff;border-radius:4px;padding:3px 5px}
+.ftr .social{justify-content:flex-start}
+@media (max-width: 1200px){
+.eco-wrap{padding:0}
+.ring{display:none}
+.eco-list{display:grid!important}
+}
+.eco-list{display:none;grid-template-columns:1fr 1fr;gap:36px;width:100%}
+.eco-list .node{position:static;transform:none;width:auto;text-align:left}
+.eco-list .node h3{justify-content:flex-start;flex-direction:row}
+@media (max-width: 860px){
+.tagline{display:none}
+.hdr{grid-template-columns:1fr auto}
+.langs{display:none}
+.split,.cases-head,.frota-in,.ftr-grid{grid-template-columns:1fr}
+.spec-col{order:-1}
+.spec{top:80px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.col:nth-child(n){margin-top:0}
+.col:nth-child(even){margin-top:8vh}
+.menu{grid-template-columns:1fr}
+.menu aside{justify-self:start;text-align:left}
+.menu .social{justify-content:flex-start}
+.eco-list{grid-template-columns:1fr}
+.dots{left:14px}
+}
+@media (max-width: 520px){
+.hdr-r .pill{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+.marquee{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
+.reveal{clip-path:none!important}
+.big .w{opacity:1!important}
+*{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<!-- ================= HEADER ================= -->
+<header class="hdr" id="hdr">
+<a class="logo" href="https://www.westcargo.com.br/index.html" aria-label="West Cargo, página inicial">
+<img src="https://www.westcargo.com.br/images/logo.png" alt="West Cargo">
+</a>
+<div class="tagline">Excelência em transporte rodoviário</div>
+<div class="hdr-r">
+<div class="langs" aria-label="Idioma">
+<a href="https://www.westcargo.com.br/es/index.html" lang="es">ES</a><span>•</span>
+<a href="https://www.westcargo.com.br/us/index.html" lang="en">EN</a><span>•</span>
+<a href="#" aria-current="page">PT</a>
+</div>
+<a class="pill" href="https://www.westcargo.com.br/fale-conosco.html">Fale<br>conosco</a>
+<button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i></button>
+</div>
+</header>
+<div class="menu" id="menu" aria-hidden="true">
+<nav aria-label="Menu principal">
+<a href="#top">Home</a>
+<a href="#empresa">Empresa</a>
+<a href="#servicos">Serviços</a>
+<a href="https://www.westcargo.com.br/clientes.html">Clientes</a>
+<a href="#frota">Frota</a>
+<a href="#certificacoes">Certificações</a>
+<a href="#cases">Cases</a>
+<a href="https://www.westcargo.com.br/midias.html">Mídia</a>
+<a href="http://18.228.167.202:8796/">Tracking</a>
+<a href="https://www.westcargo.com.br/fale-conosco.html">Contato</a>
+</nav>
+<aside>
+<div class="social">
+<a href="https://www.linkedin.com/company/west-cargo/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9V21H9z"/></svg></a>
+<a href="https://www.instagram.com/westcargo_oficial/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.6 2.2 2.2 4.6 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.3 2.5 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.3-.1 5.7-2.5 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.3-2.5-5.7-5.8-5.8C15 2 14.7 2 12 2z"/></svg></a>
+<a href="https://www.youtube.com/channel/UCrhHIZUwuBTWgT6ldKSfV8g" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a>
+</div>
+<div class="muted">West Cargo © Todos os direitos reservados</div>
+</aside>
+</div>
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+<div class="hero-stage">
+<canvas id="road" aria-hidden="true"></canvas>
+<div class="hero-copy" id="heroCopy">
+<h1><span class="c1">Excelência em</span><span class="c2">transporte rodoviário</span></h1>
+<p>Transportadora Rodoviária atuando desde 1998 no mercado de carga atendendo Companhias Aéreas, Agentes de Carga Aérea, Importadores e Exportadores.</p>
+</div>
+<div class="reveal" id="reveal">
+<img src="https://www.westcargo.com.br/images/banner-02-novo.jpg" alt="West Cargo - Transporte Rodoviário">
+<img class="off" src="https://www.westcargo.com.br/images/banner-01-novo.jpg" alt="West Cargo - Doses da Vacina Coronavac">
+</div>
+<div class="scroll-hint" id="hint">Role para explorar</div>
+</div>
+</section>
+<!-- ================= EMPRESA ================= -->
+<section class="statement" id="empresa">
+<div class="label">Quem somos?</div>
+<p class="big js-words"><span class="hl">A West Cargo, fundada em 1998,</span> é uma transportadora rodoviária de cargas que atende Companhias Aéreas, Agentes de Carga, Importadores e Exportadores.</p>
+<div class="split">
+<figure><img class="js-par" src="https://www.westcargo.com.br/images/quem-somos-caminhao.jpg" alt="História West Cargo" loading="lazy"></figure>
+<div>
+<p>A empresa conta com frota diversificada, tendo equipamentos de última geração, atuando em todas as frentes de transporte rodoviário, com profissionais altamente qualificados que superam as expectativas dos clientes, atuando sempre com alta performance e qualidade.</p>
+<a class="more" href="https://www.westcargo.com.br/quem-somos.html"><span>Saiba mais +</span></a>
+</div>
+</div>
+</section>
+<!-- ================= SERVIÇOS ================= -->
+<section class="statement" id="servicos" style="padding-top:clamp(40px,6vh,80px)">
+<div class="label">Serviços</div>
+<p class="big js-words"><span class="hl">Busca constante de qualidade</span> em soluções modernas e eficientes oferecendo as melhores opções para cada tipo de carga com comprometimento, responsabilidade e pontualidade.</p>
+<div class="split" style="grid-template-columns:1fr">
+<p style="max-width:62ch">Nossa missão é transportar com qualidade e superar as expectativas do cliente, respeitando os horários pré-estabelecidos!</p>
+</div>
+</section>
+<section class="divs" id="divs" aria-label="Divisões">
+<div class="divs-stage">
+<div class="blob a" id="blobA"></div><div class="blob b" id="blobB"></div>
+<div class="dots" id="dots" role="tablist" aria-label="Divisões">
+<button style="--c:var(--sky)" aria-label="Divisão Aérea"></button>
+<button style="--c:var(--teal)" aria-label="Divisão Farma"></button>
+<button style="--c:var(--navy)" aria-label="Divisão Marítimo"></button>
+<button style="--c:var(--orange)" aria-label="Divisão Aviation"></button>
+</div>
+<article class="panel" style="--c:var(--sky)">
+<div class="wm"><b>Divisão</b><span class="dot"></span><i>Aérea</i></div>
+<p>Transporte rodoviário em regime de trânsito aduaneiro de cargas de importação e exportação entre Aeroportos e Zonas Secundárias.</p>
+<a class="more" href="https://www.westcargo.com.br/servicos.html#aerea"><span>Ver detalhes</span></a>
+<img src="https://www.westcargo.com.br/images/divisao-aerea.png" alt="Divisão Aérea" loading="lazy">
+</article>
+<article class="panel" style="--c:var(--teal)">
+<div class="wm"><b>Divisão</b><span class="dot"></span><i>Farma</i></div>
+<p>Transporte rodoviário de insumos e medicamentos.</p>
+<a class="more" href="https://www.westcargo.com.br/servicos.html#farma"><span>Ver detalhes</span></a>
+<img src="https://www.westcargo.com.br/images/divisao-farma.png" alt="Divisão Farma" loading="lazy">
+</article>
+<article class="panel" style="--c:var(--navy)">
+<div class="wm"><b>Divisão</b><span class="dot"></span><i>Marítimo</i></div>
+<p>Transporte rodoviário no modal FCL e LCL nos portos de Santos, Paranaguá e Itajaí.</p>
+<a class="more" href="https://www.westcargo.com.br/servicos.html#maritimo"><span>Ver detalhes</span></a>
+<img src="https://www.westcargo.com.br/images/divisao-maritmo.png" alt="Divisão Marítimo" loading="lazy">
+</article>
+<article class="panel" style="--c:var(--orange)">
+<div class="wm"><b>Divisão</b><span class="dot"></span><i>Aviation</i></div>
+<p>Transporte rodoviário especializado em turbinas e helicópteros.</p>
+<a class="more" href="https://www.westcargo.com.br/servicos.html#aviation"><span>Ver detalhes</span></a>
+<img src="https://www.westcargo.com.br/images/divisao-aereo.png" alt="Divisão Aviation" loading="lazy">
+</article>
+</div>
+</section>
+<!-- ================= ECOSSISTEMA ================= -->
+<section class="eco" aria-label="Resumo das divisões">
+<div class="eco-wrap">
+<div class="ring" id="ring">
+<svg viewBox="0 0 100 100" aria-hidden="true">
+<defs>
+<linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3BA3E0"/><stop offset="1" stop-color="#1FB39A"/></linearGradient>
+<linearGradient id="g2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1FB39A"/><stop offset="1" stop-color="#012D52"/></linearGradient>
+<linearGradient id="g3" x1="1" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#012D52"/><stop offset="1" stop-color="#F0573E"/></linearGradient>
+<linearGradient id="g4" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F0573E"/><stop offset="1" stop-color="#3BA3E0"/></linearGradient>
+</defs>
+<circle cx="50" cy="50" r="49" fill="none" stroke="#dfe4ea" stroke-width=".3"/>
+<g fill="none" stroke-width="2.2" stroke-linecap="round" class="arcs">
+<path d="M56 9.4 A41 41 0 0 1 90.6 44" stroke="url(#g1)"/>
+<path d="M90.6 56 A41 41 0 0 1 56 90.6" stroke="url(#g2)"/>
+<path d="M44 90.6 A41 41 0 0 1 9.4 56" stroke="url(#g3)"/>
+<path d="M9.4 44 A41 41 0 0 1 44 9.4" stroke="url(#g4)"/>
+</g>
+</svg>
+<div class="center"><img src="https://www.westcargo.com.br/images/logo.png" alt="West Cargo"></div>
+<div class="node n1" style="--c:var(--sky)"><h3>Divisão Aérea</h3><ul>
+<li>Trânsito aduaneiro entre Aeroportos e Zonas Secundárias</li><li>Coleta de cargas para exportação</li><li>Entrega de cargas nacionalizadas de importação</li></ul></div>
+<div class="node n2" style="--c:var(--teal)"><h3>Divisão Farma</h3><ul>
+<li>Transporte rodoviário de insumos e medicamentos</li><li>Veículos refrigerados homologados com qualificação térmica</li><li>Monitoramento online das cargas durante o trajeto</li></ul></div>
+<div class="node n3" style="--c:var(--navy)"><h3>Divisão Marítimo</h3><ul>
+<li>Modal FCL e LCL nos portos de Santos, Paranaguá e Itajaí</li><li>Coleta de cargas para exportação</li><li>Entrega de cargas nacionalizadas de importação</li></ul></div>
+<div class="node n4" style="--c:var(--orange)"><h3>Divisão Aviation</h3><ul>
+<li>Especializado em turbinas e helicópteros</li><li>Ampla frota equipada com suspensão pneumática</li><li>Expertise nos trâmites burocráticos de liberação de partes e peças aeronáuticas</li></ul></div>
+</div>
+</div>
+<div class="eco-list" id="ecoList"></div>
+</section>
+<!-- ================= FROTA ================= -->
+<section class="frota on-dark" id="frota">
+<div class="frota-bg"><img src="https://www.westcargo.com.br/images/estrutura.jpg" alt="" loading="lazy"></div>
+<div class="frota-in">
+<div>
+<div class="label">Frota</div>
+<p class="frota-intro">Composta por modernos e diversificados equipamentos que possibilitam soluções de acordo com a necessidade de cada cliente.</p>
+<ul class="fleet" id="fleet"></ul>
+<div class="frota-foot"><a class="more" href="https://www.westcargo.com.br/frotas.html"><span>Saiba mais +</span></a></div>
+</div>
+<div class="spec-col">
+<div class="spec" id="spec" aria-live="polite">
+<figure><img id="specImg" src="https://www.westcargo.com.br/images/frotas/02.jpg" alt=""></figure>
+<h3 id="specName"></h3>
+<dl id="specList"></dl>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CERTIFICAÇÕES ================= -->
+<section class="certs" id="certificacoes">
+<div class="label">Certificações</div>
+<div class="marquee" id="marquee"></div>
+</section>
+<!-- ================= CASES ================= -->
+<section class="cases" id="cases">
+<div class="cases-head">
+<h2>Diversidade de transportes</h2>
+<div>
+<p>Temos soluções das mais variadas formas para que o seu transporte seja feito com segurança, qualidade e prontidão.</p>
+<a class="more" href="https://www.westcargo.com.br/cases.html"><span>Veja nossos cases</span></a>
+</div>
+</div>
+<div class="grid" id="grid"></div>
+</section>
+</main>
+<!-- ================= FOOTER ================= -->
+<footer class="ftr">
+<div class="ftr-bg"><img src="https://www.westcargo.com.br/images/banner-02.jpg" alt="" loading="lazy"></div>
+<div class="ftr-in">
+<a class="cta" href="https://www.westcargo.com.br/fale-conosco.html">Fale conosco</a>
+<div class="ftr-grid">
+<nav aria-label="Rodapé">
+<a href="#empresa">Empresa</a><a href="#servicos">Serviços</a>
+<a href="https://www.westcargo.com.br/clientes.html">Clientes</a><a href="#frota">Frota</a>
+<a href="#certificacoes">Certificações</a><a href="#cases">Cases</a>
+<a href="https://www.westcargo.com.br/midias.html">Mídia</a><a href="http://18.228.167.202:8796/">Tracking</a>
+</nav>
+<div style="display:flex;flex-direction:column;gap:10px">
+<a href="https://www.westcargo.com.br/us/index.html">West Cargo - English</a>
+<a href="https://www.westcargo.com.br/es/index.html">West Cargo - Español</a>
+</div>
+<div class="social" id="ftrSocial"></div>
+</div>
+<div class="legal">
+<img src="https://www.westcargo.com.br/images/logo-rodape.png" alt="Logotipo West Cargo">
+<span>West Cargo © Todos os direitos reservados</span>
+<a href="https://www.westcargo.com.br/canal-de-denuncias.html">Canal de Denúncias</a>
+<a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm">LGPD</a>
+<a href="https://www.westcargo.com.br/privacidade.html">Privacidade</a>
+<a href="https://www.westcargo.com.br/politica-de-uso.html">Política de Uso</a>
+<a href="https://www.westcargo.com.br/cookies.html">Cookies</a>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+const IMG = 'https://www.westcargo.com.br/images/';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s);
+const fleet = [
+['VUC - Veículo Urbano de Carga','02',[['Peso','até 1.000Kg'],['CLA','3,90m x 2,20m x 2,20m'],['Volume','20m³']]],
+['Caminhão 3/4','03',[['Peso','até 2.500Kg'],['CLA','5,30m x 2m x 2m'],['Volume','25m³']]],
+['Caminhão Toco','05',[['Peso','até 5.000Kg'],['Capacidade','2 Pallets de Aviação'],['CLA','7m x 2,48m x 2,60m'],['Volume','50m³']]],
+['Caminhão Truck','06',[['Peso','até 10.000Kg'],['Capacidade','3 Pallets de Aviação'],['CLA','9,80m x 2,48m x 2,60m'],['Volume','63m³']]],
+['Carreta Baú','07',[['Peso','até 25.000Kg'],['Capacidade','4 Pallets de Aviação'],['CLA','13,50m x 2,48m x 2,60m'],['Volume','90m³']]],
+['Carreta Sider','08',[['Peso','até 25.000Kg'],['Capacidade','4 Pallets de Aviação'],['CLA','13,50m x 2,48m x 2,60m'],['Volume','90m³']]],
+['Carreta Carga Seca Suspensão Pneumática','09',[['Peso','até 18.000Kg'],['Tipo','Cargas Over Size'],['CLA','12,20m x 2,50m x 2,80m']]],
+['Prancha Rebaixada Suspensão Pneumática','10',[['Peso','até 18.000Kg'],['Tipo','Cargas Over Size'],['CLA','8,60m x 3m x 3m'],['Ideal','Transporte de Turbinas de Aviação']]],
+['Carreta Bug','11',[['Peso','até 25.000Kg'],['Tipo','Porta Contêineres'],['Uso','Porta Contêineres de 20 e 40 pés']]],
+];
+const fleetEl = $('#fleet');
+fleet.forEach((f,i) => { const li=document.createElement('li'); li.textContent=f[0]; li.dataset.i=i; fleetEl.appendChild(li); });
+fleet.forEach(f => { const im=new Image(); im.src=IMG+'frotas/'+f[1]+'.jpg'; });
+let curFleet=-1;
+function setFleet(i){
+if(i===curFleet) return; curFleet=i;
+fleetEl.querySelectorAll('li').forEach((li,k)=>li.classList.toggle('on',k===i));
+const spec=$('#spec'), f=fleet[i];
+spec.classList.add('swap');
+setTimeout(()=>{
+$('#specImg').src=IMG+'frotas/'+f[1]+'.jpg'; $('#specImg').alt=f[0];
+$('#specName').textContent=f[0];
+$('#specList').innerHTML=f[2].map(([k,v])=>'<dt>'+k+'</dt><dd>'+v+'</dd>').join('');
+spec.classList.remove('swap');
+},200);
+}
+setFleet(0);
+fleetEl.addEventListener('mouseover',e=>{ if(e.target.dataset.i) setFleet(+e.target.dataset.i); });
+const certs = Array.from({length:9},(_,i)=>'<img src="'+IMG+'certificacoes/certificacao-0'+(i+1)+'.png" alt="Certificação '+(i+1)+'" loading="lazy">').join('');
+$('#marquee').innerHTML = certs + certs.replace(/alt="[^"]*"/g,'alt="" aria-hidden="true"');
+const caseIds=[41,42,43,44,...Array.from({length:40},(_,i)=>i+1)];
+const cols=[[],[],[],[]];
+caseIds.forEach((n,i)=>cols[i%4].push('<img src="'+IMG+'cases/'+String(n).padStart(2,'0')+'.jpg" alt="Cases West Cargo" loading="lazy">'));
+$('#grid').innerHTML=cols.map(c=>'<div class="col">'+c.join('')+'</div>').join('');
+$('#ftrSocial').innerHTML=document.querySelector('.menu .social').innerHTML;
+$('#ecoList').innerHTML=[...document.querySelectorAll('#ring .node')].map(n=>n.outerHTML).join('');
+const burger=$('#burger'), menu=$('#menu');
+function toggleMenu(open){
+document.body.classList.toggle('menu-open',open);
+burger.setAttribute('aria-expanded',open); menu.setAttribute('aria-hidden',!open);
+burger.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+if(window.lenis) open?lenis.stop():lenis.start();
+}
+burger.addEventListener('click',()=>toggleMenu(!document.body.classList.contains('menu-open')));
+menu.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+addEventListener('keydown',e=>{ if(e.key==='Escape') toggleMenu(false); });
+const cv=$('#road'), ctx=cv.getContext('2d');
+let W,H,streaks=[];
+function size(){ const d=Math.min(devicePixelRatio||1,2); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*d; cv.height=H*d; ctx.setTransform(d,0,0,d,0,0); }
+function mk(){ const y=H*(.42+Math.random()*.58); const head=Math.random()<.55;
+return {x:Math.random()*W*1.4, y, len:40+Math.random()*220*(y/H), sp:(1.5+Math.random()*5)*(y/H)*(head?1:-1), a:.15+Math.random()*.6, c:head?'255,255,255':'240,87,62', r:.6+Math.random()*1.4*(y/H)}; }
+function initStreaks(){ size(); streaks=Array.from({length:Math.round(W/9)},mk); }
+let stars=[];
+function initStars(){ stars=Array.from({length:Math.round(W/12)},()=>({x:Math.random()*W,y:Math.random()*H*.55,r:Math.random()*1.2,a:Math.random()*.6})); }
+function draw(){
+ctx.clearRect(0,0,W,H);
+stars.forEach(s=>{ctx.fillStyle='rgba(255,255,255,'+s.a+')';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.3);ctx.fill();});
+streaks.forEach(s=>{
+const g=ctx.createLinearGradient(s.x,0,s.x-s.len*Math.sign(s.sp),0);
+g.addColorStop(0,'rgba('+s.c+','+s.a+')'); g.addColorStop(1,'rgba('+s.c+',0)');
+ctx.strokeStyle=g; ctx.lineWidth=s.r; ctx.beginPath(); ctx.moveTo(s.x,s.y); ctx.lineTo(s.x-s.len*Math.sign(s.sp),s.y); ctx.stroke();
+if(!reduce){ s.x+=s.sp; if(s.x>W+s.len) s.x=-s.len; if(s.x<-s.len) s.x=W+s.len; }
+});
+if(!reduce) requestAnimationFrame(draw);
+}
+initStreaks(); initStars(); draw();
+addEventListener('resize',()=>{initStreaks();initStars(); if(reduce) draw();});
+const banners=[...document.querySelectorAll('#reveal img')]; let b=0;
+setInterval(()=>{ banners[b].classList.add('off'); b=(b+1)%banners.length; banners[b].classList.remove('off'); },5500);
+const hdr=$('#hdr');
+function onScroll(){ hdr.classList.toggle('solid', scrollY > innerHeight*1.6); }
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+const panels=[...document.querySelectorAll('.panel')], dotBtns=[...document.querySelectorAll('#dots button')];
+const tints=[['#bfe3f8','#d9f0fb'],['#b8efe4','#d6f6ef'],['#b9c8dc','#dbe3ee'],['#fcc7bc','#fde0d6']];
+let curDiv=-1;
+function setDiv(i){
+if(i===curDiv) return; curDiv=i;
+panels.forEach((p,k)=>p.classList.toggle('on',k===i));
+dotBtns.forEach((d,k)=>{d.classList.toggle('on',k===i); d.setAttribute('aria-selected',k===i);});
+$('#blobA').style.background=tints[i][0]; $('#blobB').style.background=tints[i][1];
+}
+setDiv(0);
+const divs=$('#divs');
+dotBtns.forEach((d,i)=>d.addEventListener('click',()=>{
+const y=divs.offsetTop + (divs.offsetHeight-innerHeight)*(i+.5)/4;
+window.lenis?lenis.scrollTo(y):scrollTo({top:y,behavior:'smooth'});
+}));
+if(!window.gsap || !window.ScrollTrigger){ fallback(); return; }
+gsap.registerPlugin(ScrollTrigger);
+if(!reduce && window.Lenis){
+window.lenis=new Lenis({lerp:.09});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+const t=a.getAttribute('href'); if(t.length>1&&document.querySelector(t)){e.preventDefault();lenis.scrollTo(t==='#top'?0:t);}
+}));
+}
+ScrollTrigger.create({trigger:divs,start:'top top',end:'bottom bottom',
+onUpdate:s=>setDiv(Math.min(3,Math.floor(s.progress*4)))});
+fleetEl.querySelectorAll('li').forEach((li,i)=>ScrollTrigger.create({trigger:li,start:'top 55%',end:'bottom 55%',
+onToggle:s=>s.isActive&&setFleet(i)}));
+if(reduce) return;
+const tl=gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom bottom',scrub:.6}});
+tl.to('#reveal',{clipPath:'inset(0% 0% 0% 0% round 0vw 0vw 0vw 0vw)',ease:'none'},0)
+.to('#heroCopy',{yPercent:-18,opacity:0,ease:'none',duration:.55},0)
+.to('#hint',{opacity:0,duration:.1},0);
+gsap.from('.hero h1 span',{yPercent:60,opacity:0,duration:1.2,stagger:.12,ease:'expo.out',delay:.15});
+gsap.from('.hero p',{opacity:0,y:20,duration:1,delay:.55});
+gsap.from('#reveal img',{yPercent:35,duration:1.6,delay:.5,ease:'expo.out'});
+document.querySelectorAll('.js-words').forEach(p=>{
+const walk=n=>{ [...n.childNodes].forEach(c=>{
+if(c.nodeType===3){ const f=document.createDocumentFragment();
+c.textContent.split(/(\s+)/).forEach(t=>{ if(!t) return; if(/^\s+$/.test(t)) f.appendChild(document.createTextNode(t)); else { const s=document.createElement('span'); s.className='w'; s.textContent=t; f.appendChild(s);} });
+c.replaceWith(f);
+} else walk(c); }); };
+walk(p);
+gsap.to(p.querySelectorAll('.w'),{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:p,start:'top 82%',end:'bottom 45%',scrub:true}});
+});
+gsap.utils.toArray('.js-par').forEach(im=>gsap.fromTo(im,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:im.parentElement,scrub:true}}));
+gsap.utils.toArray('.col').forEach((c,i)=>gsap.to(c,{y:[-60,-160,-20,-220][i],ease:'none',scrollTrigger:{trigger:'#grid',scrub:true}}));
+gsap.fromTo('.ftr-bg img',{yPercent:-12,scale:1.15},{yPercent:0,scale:1,ease:'none',scrollTrigger:{trigger:'.ftr',scrub:true}});
+document.querySelectorAll('.arcs path').forEach(p=>{const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L;});
+gsap.to('.arcs path',{strokeDashoffset:0,duration:1.2,stagger:.2,ease:'power2.out',scrollTrigger:{trigger:'#ring',start:'top 70%'}});
+gsap.from('#ring .node',{opacity:0,y:20,duration:.8,stagger:.15,scrollTrigger:{trigger:'#ring',start:'top 70%'}});
+addEventListener('load',()=>ScrollTrigger.refresh());
+function fallback(){
+document.querySelector('#reveal').style.clipPath='none';
+addEventListener('scroll',()=>{
+const r=divs.getBoundingClientRect(), p=-r.top/(r.height-innerHeight);
+setDiv(Math.max(0,Math.min(3,Math.floor(p*4))));
+fleetEl.querySelectorAll('li').forEach((li,i)=>{const b=li.getBoundingClientRect(); if(b.top<innerHeight*.55&&b.bottom>innerHeight*.55) setFleet(i);});
+},{passive:true});
+}
+})();
+</script>
+</body>
+</html>
